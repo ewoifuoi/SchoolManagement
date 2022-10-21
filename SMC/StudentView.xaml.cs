@@ -23,6 +23,9 @@ namespace SMC
         public StudentView()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
+
+
     }
 }

@@ -25,6 +25,22 @@ namespace SMC
         {
             InitializeComponent();
             
+            for(int i = 0; i < 10; i++)
+            {
+                StackPanel sp = new StackPanel();
+                sp.Orientation = Orientation.Horizontal;
+                for(int j = 0; j < 3; j++)
+                {
+                    if (i == 9) j--;
+                    StudentView sv = new StudentView();
+                    sv.Margin = new Thickness(5);
+                    sp.Children.Add(sv);
+                }
+                ListBoxItem l = new ListBoxItem();
+                l.Content = sp;
+                lb.Items.Add(l);
+
+            }
             
         }
         private string message;
