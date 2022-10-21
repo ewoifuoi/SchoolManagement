@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="SMC.StudentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SMC"
+             x:Name="userControl"
+             mc:Ignorable="d" Width="200" Height="325">
+    <Border BorderBrush="Black" BorderThickness="2,2,2,2">
+        <StackPanel Background="White">
+            <StackPanel Orientation="Horizontal" Height="35">
+                <TextBlock Width="10"></TextBlock>
+                <TextBlock Width="40"  Text="张三" FontSize="18" FontWeight="Bold" Height="26"></TextBlock>
+                <TextBlock Width="131"></TextBlock>
+            </StackPanel>
+            <Grid Height="186" Width="186">
+                <Ellipse Height="186" Width="186" Fill="#FF969696"/>
+                <Image Margin="1" Height="178" Width="178" Source="/4.png" Stretch="UniformToFill">
+                    <Image.Clip>
+                        <EllipseGeometry Center="89,89" RadiusX="89" RadiusY="89" />
+                    </Image.Clip>
+                </Image>
+            </Grid>
+            
+            <TextBlock Height="10"></TextBlock>
+            <TextBlock Height="18" Width="155"  Text="主修科目 : 计算机科学与技术"/>
+            <StackPanel Height="56" Orientation="Horizontal" Width="176">
+                <Button Width="48" Margin="5" Content="查看" Background="#FFFFA34A" FontWeight="Bold" Foreground="White" Height="27"/>
+                <Button Width="48" Margin="5" Content="编辑" FontSize="12" Background="#FFFFA34A" FontWeight="Bold" Foreground="White" Height="27"/>
+                <Button Width="48" Margin="5" Content="删除" FontSize="12" Background="#FFFFA34A" Foreground="White" FontWeight="Bold" Height="27"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+
+</UserControl>

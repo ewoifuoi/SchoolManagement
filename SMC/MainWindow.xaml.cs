@@ -24,7 +24,7 @@ namespace SMC
         public MainWindow()
         {
             InitializeComponent();
-            GetServerTime();
+            
             
         }
         private string message;
@@ -45,6 +45,11 @@ namespace SMC
 
             }
             MessageBox.Show(message);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GetServerTime();
         }
     }
 }
