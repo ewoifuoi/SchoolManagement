@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.Http;
 
 namespace SMC
 {
@@ -23,6 +24,27 @@ namespace SMC
         public MainWindow()
         {
             InitializeComponent();
+            GetServerTime();
+            
+        }
+        private string message;
+        public async void GetServerTime()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                
+                var response = await client.GetAsync("http://localhost:5002/GetTime");
+                if(response.IsSuccessStatusCode)
+                {
+                    message = await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    message = "ERROR!";
+                }
+
+            }
+            MessageBox.Show(message);
         }
     }
 }
