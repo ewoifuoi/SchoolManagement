@@ -1,18 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SMS.DataRepositories;
+using SMS.Models;
 
 namespace SMS.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IStudentRepository _studentRepository;
+
+        public HomeController(IStudentRepository studentRepository) 
         {
-            return View();
+            _studentRepository = studentRepository;
         }
-        [Route("")]
-        public string test()
-        {
-            return "test";
-        }
+
+        
 
         [HttpGet]
         [Route("/GetTime")]
