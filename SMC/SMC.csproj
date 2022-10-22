@@ -8,11 +8,37 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="4.png" />
+    <None Remove="test\1.png" />
+    <None Remove="test\2.png" />
+    <None Remove="test\3.png" />
+    <None Remove="test\4.png" />
+    <None Remove="test\5.png" />
+    <None Remove="test\6.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="4.png" />
+    <Resource Include="test\1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="test\2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="test\3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="test\4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="test\5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="test\6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
