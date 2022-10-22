@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.Http;
 using SMC.ViewModels;
+using SMC.Services;
+
 namespace SMC
 {
     /// <summary>
@@ -23,31 +25,50 @@ namespace SMC
     {
         public MainWindow()
         {
+            StudentDetails.Server = "http://127.0.0.1:5002";
             InitializeComponent();
-
             this.DataContext = new MainWindowViewModel(this);
 
-
-
         }
+        public string Server
+        {
+            get { return (string)GetValue(ServerProperty); }
+            set { SetValue(ServerProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Server.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ServerProperty =
+            DependencyProperty.Register("Server", typeof(string), typeof(MainWindow), new PropertyMetadata(StudentDetails.Server));
+
+
+
+
         private string message;
         public async void GetServerTime()
         {
             using (HttpClient client = new HttpClient())
             {
+                try
+                {
+                    var response = await client.GetAsync(StudentDetails.Server + "/Test");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        message = "Server : " + await response.Content.ReadAsStringAsync();
+                    }
+                    else
+                    {
+                        message = "ERROR!";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    message = "服务器连接失败 !";
+                }
                 
-                var response = await client.GetAsync("http://localhost:5002/GetTime");
-                if(response.IsSuccessStatusCode)
-                {
-                    message = await response.Content.ReadAsStringAsync();
-                }
-                else
-                {
-                    message = "ERROR!";
-                }
+                
 
             }
-            MessageBox.Show(message);
+            console.Items.Add(new TextBlock() { Text = message });
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -61,6 +82,12 @@ namespace SMC
             eventArg.RoutedEvent = UIElement.MouseWheelEvent;
             eventArg.Source = sender;
             listbox.RaiseEvent(eventArg);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var b = new ServerInput();
+            b.ShowDialog();
         }
     }
 }

@@ -12,6 +12,8 @@
     {
         Student GetStudent(int id);
         void Save(Student student);
+        IEnumerable<Student> GetAll();
+        
     }
 
     public class StudentRepository : IStudentRepository
@@ -22,6 +24,12 @@
         }
 
         public void Save(Student student)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        IEnumerable<Student> IStudentRepository.GetAll()
         {
             throw new NotImplementedException();
         }

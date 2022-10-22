@@ -9,10 +9,11 @@ using SMC;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 using System.Windows;
+using SMC.Services;
 
 namespace SMC.ViewModels
 {
-    public class MainWindowViewModel : INotifyPropertyChanged
+    public class MainWindowViewModel : DependencyObject, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -46,7 +47,9 @@ namespace SMC.ViewModels
                 
             }
         }
-        
+
+       
+
 
     }
 }

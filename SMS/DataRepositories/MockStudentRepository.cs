@@ -26,6 +26,13 @@ namespace SMS.DataRepositories
         {
             throw new NotImplementedException();
         }
+
+        
+
+        public IEnumerable<Student> GetAll()
+        {
+            return _studentList;
+        }
     }
 
 

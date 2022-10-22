@@ -26,7 +26,7 @@ namespace SMC
         { 
             _stu = stu;
             StudentView.stu = stu;
-
+            this.DataContext = this;
             InitializeComponent();
             
         }
