@@ -17,6 +17,7 @@ namespace SMS.DataRepositories
 
             };
         }
+        public int Count() => _studentList.Count;
         public Student GetStudent(int id)
         {
             return _studentList.FirstOrDefault(a => a.Id == id);
@@ -33,6 +34,8 @@ namespace SMS.DataRepositories
         {
             return _studentList;
         }
+
+        
     }
 
 

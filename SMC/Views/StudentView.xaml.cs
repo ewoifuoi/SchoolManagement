@@ -45,9 +45,6 @@ namespace SMC
             DependencyProperty.Register("_stu", typeof(StuInfoModel), typeof(StudentView), new PropertyMetadata(stu));
 
 
-
-
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var t = new Details();

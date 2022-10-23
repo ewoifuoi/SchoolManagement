@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using System.Net.Http;
 using SMC.ViewModels;
 using SMC.Services;
+using System.Threading;
+using System.ComponentModel;
 
 namespace SMC
 {
@@ -25,7 +27,6 @@ namespace SMC
     {
         public MainWindow()
         {
-            StudentDetails.Server = "http://127.0.0.1:5002";
             InitializeComponent();
             this.DataContext = new MainWindowViewModel(this);
 
@@ -39,42 +40,23 @@ namespace SMC
         // Using a DependencyProperty as the backing store for Server.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ServerProperty =
             DependencyProperty.Register("Server", typeof(string), typeof(MainWindow), new PropertyMetadata(StudentDetails.Server));
-
-
-
-
-        private string message;
-        public async void GetServerTime()
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                try
-                {
-                    var response = await client.GetAsync(StudentDetails.Server + "/Test");
-                    if (response.IsSuccessStatusCode)
-                    {
-                        message = "Server : " + await response.Content.ReadAsStringAsync();
-                    }
-                    else
-                    {
-                        message = "ERROR!";
-                    }
-                }
-                catch (Exception ex)
-                {
-                    message = "服务器连接失败 !";
-                }
-                
-                
-
-            }
-            console.Items.Add(new TextBlock() { Text = message });
-        }
+    
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GetServerTime();
+            
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.DoWork += (s, e) => {
+                //Some work...
+                e.Result = StudentDetails.GetServerTime();
+            };
+            worker.RunWorkerCompleted += (s, e) => {
+                //e.Result"returned" from thread
+                console.Items.Add(new TextBlock() { Text = DateTime.Now.ToString("T") + "  " + e.Result });
+            };
+            worker.RunWorkerAsync();
         }
+
         private void listBoxDevice_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             var listbox = sender as System.Windows.Controls.ListBox;
@@ -88,6 +70,7 @@ namespace SMC
         {
             var b = new ServerInput();
             b.ShowDialog();
+            Server = StudentDetails.Server;
         }
     }
 }

@@ -43,5 +43,12 @@ namespace SMS.Controllers
         {
             return "服务器连接成功 !";
         }
+
+        [HttpGet]
+        [Route("/StuCount")]
+        public int GetStuNum()
+        {
+            return _studentRepository.Count();
+        }
     }
 }

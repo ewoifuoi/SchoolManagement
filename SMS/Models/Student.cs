@@ -13,11 +13,17 @@
         Student GetStudent(int id);
         void Save(Student student);
         IEnumerable<Student> GetAll();
+        int Count();
         
     }
 
     public class StudentRepository : IStudentRepository
     {
+        public int Count()
+        {
+            throw new NotImplementedException();
+        }
+
         public Student GetStudent(int id)
         {
             throw new NotImplementedException();

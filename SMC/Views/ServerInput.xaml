@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SMC"
         mc:Ignorable="d"
-        Title="ServerInput" Height="151" Width="250" ResizeMode="NoResize">
+        Title="ServerInput" Height="151" Width="250" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterScreen">
     <StackPanel>
         <TextBlock Height="15"></TextBlock>
-        <TextBox x:Name="tb" Padding="6" Width="229" Height="35" Text="请输入ip地址:端口" FontSize="14" Foreground="DarkGray" PreviewMouseDown="tb_MouseLeftButtonDown"></TextBox>
+        <TextBox x:Name="tb" Padding="6" Width="229" Height="35" Text="请输入ip地址" FontSize="14" Foreground="DarkGray" PreviewMouseDown="tb_MouseLeftButtonDown"></TextBox>
         <TextBlock Height="14"></TextBlock>
         <Button Height="40" Width="137" Content="确定" FontSize="14" Click="Button_Click"></Button>
     </StackPanel>

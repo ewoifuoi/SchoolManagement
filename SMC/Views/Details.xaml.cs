@@ -25,9 +25,7 @@ namespace SMC
             InitializeComponent();
         }
 
-
         public static StuInfoModel stu { get; set; }
-
 
         public StuInfoModel _stu
         {
@@ -38,7 +36,6 @@ namespace SMC
         // Using a DependencyProperty as the backing store for _stu.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty _stuProperty =
             DependencyProperty.Register("_stu", typeof(StuInfoModel), typeof(Details), new PropertyMetadata(stu));
-
 
 
         public void SetStu(StuInfoModel stu)
