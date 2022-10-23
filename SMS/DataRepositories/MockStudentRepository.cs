@@ -12,8 +12,8 @@ namespace SMS.DataRepositories
                 new Student() { Id = 2, Name = "李四", Major="计算机", Email="23pllppl33@ffs.com"},
                 new Student() { Id = 3, Name = "王五", Major="计算机", Email="233qwqiwjn3@ffs.com"},
                 new Student() { Id = 4, Name = "Momo", Major="计算机", Email="23pppp33@ffs.com"},
-                new Student() { Id = 5, Name = "可莉", Major="计算机", Email="2fwefe3@ffs.com"},
-                new Student() { Id = 6, Name = "Bob", Major="计算机", Email="23grgrr3@ffs.com"}
+                new Student() { Id = 5, Name = "ewoifuoi", Major="计算机", Email="2fwefe3@ffs.com"},
+                new Student() { Id = 6, Name = "可莉", Major="计算机", Email="23grgrr3@ffs.com"}
 
             };
         }

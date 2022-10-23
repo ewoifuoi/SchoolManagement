@@ -19,6 +19,10 @@
             <ColumnDefinition Width="765*"/>
             <ColumnDefinition Width="9*"/>
         </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+            <TextBlock Width="644"></TextBlock>
+            <Button Width="104" Margin="10" Content="获取学生信息" FontSize="14" Height="38" Click="Button_Click_1"></Button>
+        </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" DataContext="{Binding ElementName=window}">
             <TextBlock Height="22"></TextBlock>
             <StackPanel Margin="18" Background="#FFD8EAFF" Opacity="0.7" Width="206">
@@ -26,7 +30,7 @@
                 <TextBlock Margin="5" Padding="5" Height="43" Text="{Binding Server}" FontSize="22" FontWeight="Bold" Width="169" Foreground="#FF9B3A37"></TextBlock>
                 <TextBlock Height="4"></TextBlock>
             </StackPanel>
-
+            
 
             <TextBlock></TextBlock>
             

@@ -17,6 +17,8 @@ using SMC.ViewModels;
 using SMC.Services;
 using System.Threading;
 using System.ComponentModel;
+using SMC.Common;
+using Console = SMC.Common.Console;
 
 namespace SMC
 {
@@ -29,6 +31,7 @@ namespace SMC
         {
             InitializeComponent();
             this.DataContext = new MainWindowViewModel(this);
+            Console.lb = console;
 
         }
         public string Server
@@ -52,7 +55,8 @@ namespace SMC
             };
             worker.RunWorkerCompleted += (s, e) => {
                 //e.Result"returned" from thread
-                console.Items.Add(new TextBlock() { Text = DateTime.Now.ToString("T") + "  " + e.Result });
+                Common.Console.log(e.Result.ToString());
+                
             };
             worker.RunWorkerAsync();
         }
@@ -71,6 +75,20 @@ namespace SMC
             var b = new ServerInput();
             b.ShowDialog();
             Server = StudentDetails.Server;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.DoWork += (s, e) => {
+                //Some work...
+                e.Result = StudentDetails.GetNum();
+            };
+            worker.RunWorkerCompleted += (s, e) => {
+                //e.Result"returned" from thread
+                Console.log("Server",e.Result.ToString());
+            };
+            worker.RunWorkerAsync();
         }
     }
 }

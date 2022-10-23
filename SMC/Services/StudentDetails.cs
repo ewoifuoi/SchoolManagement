@@ -18,22 +18,19 @@ namespace SMC.Services
         public static string Server = "127.0.0.1";
         public static string Port = "5002";
 
-        public static int GetNum(ref ListBox console)
+        public static int GetNum()
         {
-            
             using (HttpClient c = new HttpClient())
             {
                 try
                 {
-                    var response = c.GetAsync("http://" + Server + ":" + Port).Result;
-                    return Convert.ToInt32(response.Content.ReadAsStringAsync());
-
+                    var response = c.GetAsync("http://" + Server + ":" + Port + "/StuCount").Result;
+                    return Convert.ToInt32(response.Content.ReadAsStringAsync().Result.ToString());
                 }
                 catch (Exception ex)
                 {
-                    console.Items.Add(new TextBlock() { Text = DateTime.Now.ToString("T") + ":  请求失败：" + ex.Message });
+                    return -1;
                 }
-
             }
             return 0;
         }
@@ -41,15 +38,12 @@ namespace SMC.Services
         private static string message;
         public static string GetServerTime()
         {
-            
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    var response = client.GetAsync("http://" + Server + ":" + Port + "/Test").Result;
-                        
+                    var response = client.GetAsync("http://" + Server + ":" + Port + "/Test").Result;               
                     return message = "Server : " + response.Content.ReadAsStringAsync().Result.ToString();
-
                 }
                 catch (Exception ex)
                 {
